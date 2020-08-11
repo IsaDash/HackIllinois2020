@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Avatar from './components/Avatar'
+import SignUp from './components/SignUp'
 
 class App extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class App extends React.Component {
       <div>
          <h1>TEST</h1> 
          <Avatar />
+         <SignUp />
       </div>
       
     );
