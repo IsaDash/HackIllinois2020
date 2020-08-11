@@ -6,11 +6,17 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "arrow-keys-react": "^1.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+<<<<<<< HEAD
     "react-hook-form": "^6.3.1",
     "react-scripts": "3.4.1",
     "react-zoom-pan-pinch": "^1.6.1"
+=======
+    "react-hook-form": "^6.3.2",
+    "react-scripts": "3.4.1"
+>>>>>>> db930817ce5e3f742938eecc0483f9043e12a9ff
   },
   "scripts": {
     "start": "react-scripts start",
