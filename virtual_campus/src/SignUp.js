@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
-import ErrorMessage from "./errorMessage";
-import "./styles.css";
+import ErrorMessage from "./signUpErrorMessage";
+import "./SignUp.css";
 
 function App() {
   const {
