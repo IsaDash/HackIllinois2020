@@ -1,5 +1,4 @@
 import React from 'react';
-import Popup from "reactjs-popup";
 //import ArrowKeysReact from 'arrow-keys-react';
 import './Avatar.css'
 import ClassmateInfo from './ClassmateInfo'
@@ -57,19 +56,19 @@ class Avatar extends React.Component {
     }
 
     moveLeft = () => {
-        avatar.style.left = parseInt(avatar.style.left) - 5 + 'px';
+        avatar.style.left = parseInt(avatar.style.left) - 15 + 'px';
     }
 
     moveRight = () => {
-        avatar.style.left = parseInt(avatar.style.left) + 5 + 'px';
+        avatar.style.left = parseInt(avatar.style.left) + 15 + 'px';
     }
 
     moveUp = () => {
-        avatar.style.top = parseInt(avatar.style.top) - 5 + 'px';
+        avatar.style.top = parseInt(avatar.style.top) - 15 + 'px';
     }
 
     moveDown = () => {
-        avatar.style.top = parseInt(avatar.style.top) + 5 + 'px';
+        avatar.style.top = parseInt(avatar.style.top) + 15 + 'px';
     }
 
     handlePopup = () => {
@@ -81,7 +80,7 @@ class Avatar extends React.Component {
   
     return (
         //TODO: closePopup() should open chat screen to chat with the user. 
-      <div>
+      <div className="Background">
          <button className="button" id="avatar" onKeyDown={this.handleOnKeyPressed} onClick={this.handlePopup} ></button>
         <div>
         {this.state.showPopup ?  

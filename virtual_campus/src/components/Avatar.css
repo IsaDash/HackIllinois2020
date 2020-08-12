@@ -3,14 +3,35 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    position: relative 
+    position: absolute; 
+}
+
+.Background {
+    background-image: url('./images/uiuc_map_cropped.jpg');
+    overflow: visible;
+    padding-right: 100%;
+    margin-right: -100%;
+
+    padding-bottom: 100%;
+    margin-bottom: -100%;
+    background-repeat: no-repeat;
+    
+    /* background-position: center; */
+    /* background-size: ; */
+    
+    /* background-color: #0b44b6; */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .Classmate-Bio {
     background: #13294b;
     width: 400px;
     height: 500px;
-    position: fixed;
+    position: relative;
     left: 40%;
 }
 

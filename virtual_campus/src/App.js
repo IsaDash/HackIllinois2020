@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Avatar from './components/Avatar'
 import SignUp from './components/SignUp'
+import Map from './components/Map'
 
 class App extends React.Component {
   constructor(props) {
@@ -10,13 +11,14 @@ class App extends React.Component {
   render () {
     return (
       <div>
-         <Avatar />
-         
+         {/* <Map />  */}
+        <Avatar />
+    
       </div>
       
     );
   }
-  r
+  
 }
 
 export default App;
