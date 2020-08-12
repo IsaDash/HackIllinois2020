@@ -14,9 +14,9 @@
 }
 
 .App-header {
-  background-image: url('uiuc_map.png');
+  /* background-image: url('./components/images/uiuc_map.png'); */
   
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;

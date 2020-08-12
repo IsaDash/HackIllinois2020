@@ -2,18 +2,8 @@ import React from 'react';
 import './App.css';
 import Avatar from './components/Avatar'
 import SignUp from './components/SignUp'
+import Map from './components/Map'
 
-<<<<<<< HEAD
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        Virtual Campus
-
-      </header>
-    </div>
-  );
-=======
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -21,15 +11,14 @@ class App extends React.Component {
   render () {
     return (
       <div>
-         <h1>TEST</h1> 
+         <Map />
          <Avatar />
-         <SignUp />
+         {/* <SignUp /> */}
       </div>
       
     );
   }
   r
->>>>>>> db930817ce5e3f742938eecc0483f9043e12a9ff
 }
 
 export default App;
