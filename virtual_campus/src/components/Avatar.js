@@ -1,4 +1,5 @@
 import React from 'react';
+import Popup from "reactjs-popup";
 //import ArrowKeysReact from 'arrow-keys-react';
 import './Avatar.css'
 import ClassmateInfo from './ClassmateInfo'
@@ -8,12 +9,16 @@ var avatar = null
 class Avatar extends React.Component {    
     constructor(props) {
         super(props)
+        this.state = {
+            showPopup: false
+        }
         this.makeAvatar = this.makeAvatar.bind(this);
         this.moveDown = this.moveDown.bind(this);
         this.moveUp = this.moveUp.bind(this);
         this.moveLeft = this.moveLeft.bind(this);
         this.moveRight = this.moveRight.bind(this);
         this.handleOnKeyPressed = this.handleOnKeyPressed.bind(this);
+        this.handlePopup = this.handlePopup.bind(this);
     }
 
     componentDidMount() {
@@ -67,12 +72,23 @@ class Avatar extends React.Component {
         avatar.style.top = parseInt(avatar.style.top) + 5 + 'px';
     }
 
+    handlePopup = () => {
+        this.setState({ showPopup: !this.state.showPopup });
+    }
+
   render () {
+  //  <div id = "avatar" onKeyDown={this.handleOnKeyPressed} tabIndex="0" ></div>
+  
     return (
+        //TODO: closePopup() should open chat screen to chat with the user. 
       <div>
-         <h1>AVATAR COMPONENT</h1> 
-         <div id = "avatar" onKeyDown={this.handleOnKeyPressed} tabIndex="0" ></div>
-         <ClassmateInfo />
+         <button className="button" id="avatar" onKeyDown={this.handleOnKeyPressed} onClick={this.handlePopup} ></button>
+        <div>
+        {this.state.showPopup ?  
+            <ClassmateInfo closePopup={this.handlePopup} />  
+            : null  
+        } 
+        </div> 
       </div>
     );
   }

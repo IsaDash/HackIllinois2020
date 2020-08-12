@@ -1,23 +1,40 @@
 #avatar {
-    background:black;
+    background: #E84A27;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     position: relative 
 }
 
-.Speech-Bubble {
-    background: pink;
-    width: 300px;
-    height: 100px;
+.Classmate-Bio {
+    background: #13294b;
+    width: 400px;
+    height: 500px;
+    position: fixed;
+    left: 40%;
 }
 
 .Profile-Picture {
-    background: black;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+    width: 150px;
+    height: 150px;
     position: relative;
-    
-
+    left: 125px;
+    top: 10px;
+    border-radius:50%
 }
+
+.Header-Text {
+    color: white;
+    text-align: center;
+}
+
+.Description-Text {
+    color: white;
+}
+
+.button {
+    background-color:white;
+    width: 50px;
+    height: 50px;
+    border-radius:50%
+  }
