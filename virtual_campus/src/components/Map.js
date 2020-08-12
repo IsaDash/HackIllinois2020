@@ -1,14 +1,15 @@
 import React from "react";
 import PinchZoomPan from "react-responsive-pinch-zoom-pan";
+import { render } from "react-dom";
+import './Map.css'
+import Avatar from './Avatar'
 
-const Map = () => {
+function Map() {
     return (
         <div className='map'>
-            <PinchZoomPan>
-                <img alt='Test Image' src={require('./uiuc_map.jpg')} />
-            </PinchZoomPan>
+           <Avatar></Avatar>
         </div>
     );
-};
-
+    
+}
 export default Map;

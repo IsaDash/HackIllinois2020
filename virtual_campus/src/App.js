@@ -12,13 +12,13 @@ class App extends React.Component {
     return (
       <div>
          <Map />
-         <Avatar />
+         {/* <Avatar /> */}
          {/* <SignUp /> */}
       </div>
       
     );
   }
-  r
+  
 }
 
 export default App;

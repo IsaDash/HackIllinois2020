@@ -32,19 +32,19 @@ class Avatar extends React.Component {
         console.log(e.which || e.keyCode);
         var key_code=e.which||e.keyCode;
 		switch(key_code){
-			case 37: 
+			case 90: 
                 this.moveLeft();
                 console.log("left")
 				break;
-			case 38: 
+			case 83: 
                 this.moveUp();
                 console.log("up")
 				break;
-			case 39: 
+			case 67: 
                 this.moveRight();
                 console.log("right")
 				break;
-			case 40:
+			case 88:
                 this.moveDown();
                 console.log("down")
 				break;						
@@ -52,25 +52,25 @@ class Avatar extends React.Component {
     }
 
     moveLeft = () => {
-        avatar.style.left = parseInt(avatar.style.left) - 5 + 'px';
+        avatar.style.left = parseInt(avatar.style.left) - 15 + 'px';
     }
 
     moveRight = () => {
-        avatar.style.left = parseInt(avatar.style.left) + 5 + 'px';
+        avatar.style.left = parseInt(avatar.style.left) + 15 + 'px';
     }
 
     moveUp = () => {
-        avatar.style.top = parseInt(avatar.style.top) - 5 + 'px';
+        avatar.style.top = parseInt(avatar.style.top) - 15 + 'px';
     }
 
     moveDown = () => {
-        avatar.style.top = parseInt(avatar.style.top) + 5 + 'px';
+        avatar.style.top = parseInt(avatar.style.top) + 15 + 'px';
     }
 
   render () {
     return (
       <div>
-         <h1>AVATAR COMPONENT</h1> 
+         
          <div id = "avatar" onKeyDown={this.handleOnKeyPressed} tabIndex="0" ></div>
          <ClassmateInfo />
       </div>
