@@ -13,7 +13,8 @@ class Avatar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            showPopup: false
+            showPopup: false,
+            avatarLeft: 0
         }
 
         this.makeAvatar = this.makeAvatar.bind(this);
@@ -50,6 +51,10 @@ class Avatar extends React.Component {
         avatar.style.position = 'relative';
         avatar.style.left = '0px';
         avatar.style.top = '0px';
+
+        this.setState({
+            avatarLeft: 0
+        });
     }
 
     handleOnKeyPressed = (e) => {
@@ -78,10 +83,21 @@ class Avatar extends React.Component {
     }
 
     moveLeft = () => {
+        this.setState({
+            avatarLeft: 15 
+        })
+        // console.log(String(this.avatarLeft));
+
         avatar.style.left = parseInt(avatar.style.left) - 15 + 'px';
+        // console.log(avatar.style.left);
     }
 
     moveRight = () => {
+        this.setState({
+            avatarLeft: parseInt(avatar.style.left) - 15 
+        })
+        console.log(this.avatarLeft);
+
         avatar.style.left = parseInt(avatar.style.left) + 15 + 'px';
     }
 
@@ -98,6 +114,7 @@ class Avatar extends React.Component {
     }
 
   render () {
+    
   //  <div id = "avatar" onKeyDown={this.handleOnKeyPressed} tabIndex="0" ></div>
   
     return (
@@ -107,7 +124,7 @@ class Avatar extends React.Component {
         <button className="button" id="avatar" ref={this.refContent} onKeyDown={this.handleOnKeyPressed} onClick={this.handlePopup} ></button>
         <div>
         {this.state.showPopup ?  
-            <ClassmateInfo closePopup={this.handlePopup} />  
+            <ClassmateInfo left={parseInt(avatar.style.left) + 50 + 'px'} top={parseInt(avatar.style.top) + 100 + 'px'} closePopup={this.handlePopup} />  
             : null  
         } 
         </div> 
