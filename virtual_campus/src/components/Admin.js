@@ -9,9 +9,11 @@ class AdminPage extends Component {
     super(props);
 
     this.state = {
+      currentUID: this.props.firebase.auth.currentUser.uid,
       loading: false,
       users: [],
     };
+    
   }
 
   componentDidMount() {
@@ -20,15 +22,20 @@ class AdminPage extends Component {
     this.props.firebase.users().on('value', snapshot => {
       const usersObject = snapshot.val();
 
+      console.log(usersObject[String(this.state.currentUID)]);
+
       const usersList = Object.keys(usersObject).map(key => ({
         ...usersObject[key],
         uid: key,
       }));
 
+      console.log(usersList);
+
       this.setState({
         users: usersList,
         loading: false,
       });
+      // console.log(this.state.users)
     });
   }
 
@@ -84,6 +91,7 @@ const UserList = ({ users }) => (
     ))}
   </ul>
 );
+
 const condition =  authUser => {
   if (authUser) console.log(authUser.uid); return !!authUser};
 
