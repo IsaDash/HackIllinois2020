@@ -1,8 +1,11 @@
 import React from 'react';
+import ImageMapper from 'react-image-mapper';
 //import ArrowKeysReact from 'arrow-keys-react';
 import './Avatar.css'
 import ClassmateInfo from './ClassmateInfo'
 import AvatarImage from './images/avatar.png'
+
+import { connect, bindActionCreators } from 'react-redux'
 
 var avatar = null
 class Avatar extends React.Component {    
@@ -80,18 +83,31 @@ class Avatar extends React.Component {
   
     return (
         //TODO: closePopup() should open chat screen to chat with the user. 
-      <div className="Background">
+      <div>          
          <button className="button" id="avatar" onKeyDown={this.handleOnKeyPressed} onClick={this.handlePopup} ></button>
-        <div>
+        
         {this.state.showPopup ?  
             <ClassmateInfo closePopup={this.handlePopup} />  
             : null  
         } 
-        </div> 
+     
       </div>
     );
   }
   
 }
 
+const mapStateToProps = dispatch => {
+    return {
+      
+    }
+  }
+
+  const mapDispatchToProps = dispatch => {
+    return {
+      
+    }
+  }
+
+ // export connect(mapStateToProps, mapDispatchToProps)(Avatar)
 export default Avatar;
