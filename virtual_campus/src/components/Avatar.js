@@ -124,7 +124,7 @@ class Avatar extends React.Component {
         <button className="button" id="avatar" ref={this.refContent} onKeyDown={this.handleOnKeyPressed} onClick={this.handlePopup} ></button>
         <div>
         {this.state.showPopup ?  
-            <ClassmateInfo left={parseInt(avatar.style.left) + 50 + 'px'} top={parseInt(avatar.style.top) + 100 + 'px'} closePopup={this.handlePopup} />  
+            <ClassmateInfo left={parseInt(avatar.style.left) + 50 + 'px'} top={parseInt(avatar.style.top) + 200 + 'px'} closePopup={this.handlePopup} />  
             : null  
         } 
         </div> 

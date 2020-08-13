@@ -22,8 +22,9 @@ class Map extends React.Component {
                 
             });
             
+            console.log(this.state.msg);
         }
-        console.log(this.msg);
+        
 		
     }
     

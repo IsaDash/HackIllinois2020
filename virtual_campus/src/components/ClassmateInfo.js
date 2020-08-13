@@ -13,7 +13,6 @@ class ClassmateInfo extends React.Component {
         }
     }
 
-
     render() {
         var leftMargin = this.state.left;
         var topMargin = this.state.top;
