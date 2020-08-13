@@ -59,20 +59,21 @@ class Avatar extends React.Component {
     handleOnKeyPressed = (e) => {
 
         var key_code=e.which||e.keyCode;
+        console.log(key_code)
 		switch(key_code){
-			case 90: 
+			case 65: 
                 this.moveLeft();
           
 				break;
-			case 83: 
+			case 87: 
                 this.moveUp();
        
 				break;
-			case 67: 
+			case 68: 
                 this.moveRight();
          
 				break;
-			case 88:
+			case 83:
                 this.moveDown();
  
 				break;						
@@ -110,7 +111,6 @@ class Avatar extends React.Component {
 
   render () {
     return (
-        //TODO: closePopup() should open chat screen to chat with the user. 
       <div className="Background">
         
         <button className="button" id="avatar" ref={this.refContent} onKeyDown={this.handleOnKeyPressed} onClick={this.handlePopup} ></button>
