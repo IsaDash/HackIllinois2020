@@ -1,25 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/App';
 import Avatar from './components/Avatar'
 import Map from './components/Map'
 import * as serviceWorker from './serviceWorker';
 
-import {Provider} from 'react-redux';
-import store from './redux/store'
+import Firebase, { FirebaseContext } from './components/Firebase';
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <div>
+//     <Avatar />
+//     <Map />
+//     </div>
+//
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
 
 ReactDOM.render(
-  <React.StrictMode>
-      <div>
-        {/* <Avatar /> */}
-        {/* <Map /> */}
-        <App />
-      </div>
-    
-     
-  </React.StrictMode>,
-  document.getElementById('root')
+  <FirebaseContext.Provider value={new Firebase()}>
+    <App />
+  </FirebaseContext.Provider>,
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change

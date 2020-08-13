@@ -1,135 +1,218 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { useForm } from "react-hook-form";
-import ErrorMessage from "./signUpErrorMessage";
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
+
 import "./SignUp.css";
+import { FirebaseContext } from './Firebase';
 
-function App() {
-  const {
-    register,
-    handleSubmit,
-    errors,
-    setError,
-    clearError,
-    formState: { isSubmitting }
-  } = useForm();
-  const onSubmit = data => {
-    alert(JSON.stringify(data));
+import { withFirebase } from './Firebase';
+
+import * as ROUTES from '../constants/routes';
+
+const SignUpPage = () => (
+  <div>
+    <h1>SignUp</h1>
+    <FirebaseContext.Consumer>
+      {firebase => <SignUpForm firebase={firebase} />}
+    </FirebaseContext.Consumer>
+  </div>
+);
+
+const INITIAL_STATE = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  passwordOne: '',
+  passwordTwo: '',
+  year: '',
+  major: '',
+  classes: '',
+  aboutyou: '',
+  error: null,
+};
+
+class SignUpFormBase extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { ...INITIAL_STATE };
+  }
+
+  onSubmit = event => {
+    const { firstName, lastName, email, passwordOne, year, major, classes,
+              aboutyou} = this.state;
+
+    this.props.firebase
+      .doCreateUserWithEmailAndPassword(email, passwordOne)
+      .then(authUser => {
+        // Create a user in your Firebase realtime database
+        return this.props.firebase
+          .user(authUser.user.uid)
+          .set({
+            firstName,
+            lastName,
+            email,
+            year,
+            major,
+            classes,
+            aboutyou,
+          });
+      })
+      .then(authUser => {
+        this.setState({ ...INITIAL_STATE });
+        this.props.history.push(ROUTES.HOME);
+      })
+      .catch(error => {
+        this.setState({ error });
+      });
+
+    event.preventDefault();
+  }
+
+  onChange = event => {
+
   };
-  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-  const validateUserName = async value => {
-    await sleep(1000);
-    if (value !== "bill") {
-      setError("username", "validate");
-    } else {
-      clearError("username");
-    }
+
+  onChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
-  const uploadedImage = React.useRef(null);
-  const imageUploader = React.useRef(null);
+  render() {
+    
+    const {
+      firstName,
+      lastName,
+      email,
+      passwordOne,
+      passwordTwo,
+      year,
+      major,
+      classes,
+      aboutyou,
+      error,
+    } = this.state;
 
-  const handleImageUpload = e => {
-    const [file] = e.target.files;
-    if (file) {
-      const reader = new FileReader();
-      const { current } = uploadedImage;
-      current.file = file;
-      reader.onload = e => {
-        current.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+    const isInvalid =
+      passwordOne !== passwordTwo ||
+      passwordOne === '' ||
+      email === '' ||
+      firstName === '' ||
+      lastName === '';
 
-  return (
-    <div>
 
-    <form className="App" onSubmit={handleSubmit(onSubmit)}>
-      <h1>Sign Up</h1>
-      <label>First Name:</label>
-      <input name="firstName" ref={register({ required: true })} />
-      <ErrorMessage error={errors.firstName} />
-
-      <label>Last Name:</label>
-      <input name="lastName" ref={register({ required: true, minLength: 2 })} />
-      <ErrorMessage error={errors.firstName} />
-
-      <label>Email</label>
+    return (
+      <form onSubmit={this.onSubmit}>
       <input
-        name="email"
-        ref={register({ required: true, pattern: /^\S+@\S+$/i })}
-      />
-      <ErrorMessage error={errors.email} />
+          name="firstName"
+          value={firstName}
+          onChange={this.onChange}
+          type="text"
+          placeholder="First Name"
+        />
+        <input
+            name="lastName"
+            value={lastName}
+            onChange={this.onChange}
+            type="text"
+            placeholder="Last Name"
+          />
+        <input
+          name="email"
+          value={email}
+          onChange={this.onChange}
+          type="text"
+          placeholder="Email Address"
+        />
+        <input
+          name="passwordOne"
+          value={passwordOne}
+          onChange={this.onChange}
+          type="password"
+          placeholder="Password"
+        />
+        <input
+          name="passwordTwo"
+          value={passwordTwo}
+          onChange={this.onChange}
+          type="password"
+          placeholder="Confirm Password"
+        />
+        <input
+            name="year"
+            value={year}
+            onChange={this.onChange}
+            type="text"
+            placeholder="Year In School"
+          />
+        <input
+            name="major"
+            value={major}
+            onChange={this.onChange}
+            type="text"
+            placeholder="Major(s)"
+          />
+        <input
+            name="classes"
+            value={classes}
+            onChange={this.onChange}
+            type="text"
+            placeholder="Semester Class List (comma separated list)"
+          />
+        <textarea
+            name="aboutyou"
+            value={aboutyou}
+            onChange={this.onChange}
+            type="text"
+            placeholder="A Couple Sentences About You"
+          />
 
-      <label>Year In School</label>
-      <input
-        name="year"
-        ref={register({ required: true, min: 18 })}
-      />
-      <ErrorMessage error={errors.age} />
-
-      <label>Major</label>
-      <input
-        name="major"
-        ref={register({ required: true, min: 18 })}
-      />
-      <ErrorMessage error={errors.age} />
-
-      <label>Semester Class List (comma separated list)</label>
-      <input
-        name="classes"
-        ref={register({ required: true, min: 18 })}
-      />
-      <ErrorMessage error={errors.age} />
-
-      <label>A Couple Sentences About You</label>
-      <textarea name="aboutyou" ref={register} />
-
-      <div
+        <div
         style={{
           display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center"
+          justifyContent: "center",
+          alignItems: "center"
         }}
-      >
-      <label style={{ color: 'white' }}>Click to upload an image of yourself! (face only)</label>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageUpload}
-          ref={imageUploader}
-          style={{
-            display: "none"
-          }}
-        />
-        <div
-          style={{
-            height: "100px",
-            width: "100px",
-          }}
-          onClick={() => imageUploader.current.click()}
         >
-          <img
-            ref={uploadedImage}
-            style={{
-              width: "100%",
-              height: "100%",
-              position: "acsolute"
-            }}
-          />
+        <h5 style={{color:"white"}}>
+          Already Have an account? <Link to={ROUTES.SIGN_IN} style={{color:"white"}}>Sign In</Link>
+        </h5>
+        </div>
+        <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+        >
+        <button disabled={isInvalid} type="submit">
+          Sign Up
+        </button>
         </div>
 
-      </div>
-
-      <input disabled={isSubmitting} type="submit" />
-
-    </form>
-
-    </div>
-
-  );
+        {error && <p>{error.message}</p>}
+      </form>
+    );
+  }
 }
 
-export default App;
+const SignUpLink = () => (
+  <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }}>
+    <h5 style={{color:"white"}}>
+      Don't have an account? <Link to={ROUTES.SIGN_UP} style={{color: "white"}}>Sign Up</Link>
+    </h5>
+  </div>
+);
+
+const SignUpForm = compose(
+  withRouter,
+  withFirebase,
+)(SignUpFormBase);
+
+export default SignUpPage;
+
+export { SignUpForm, SignUpLink };

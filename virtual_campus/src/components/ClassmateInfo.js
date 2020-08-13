@@ -8,16 +8,21 @@ import { updateAvatarMovementLeft } from '../redux/modules/EditAvatar';
 import './Avatar.css'
 import flowerProfile from './images/flowerProfile.jpg'
 
+
 class ClassmateInfo extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            left: props.left,
+            top: props.top
+        }
     }
 
     render() {
-        console.log(this.props.avatar);
-        console.log(this.props.left)
+        var leftMargin = this.state.left;
+        var topMargin = this.state.top;
         return (  
-            <div className = "Classmate-Bio">  
+            <div className = "Classmate-Bio" style={{left: leftMargin, top: topMargin}}>  
                 <img className="Profile-Picture" src={flowerProfile} alt="profilePic" />
                 <h3 className="Header-Text" style={{marginTop:'25px'}} >firstName LastName</h3>
                 <h3 className="Header-Text" >Major</h3>
@@ -30,7 +35,7 @@ class ClassmateInfo extends React.Component {
                     placeholder placeholder
                     placeholder
                  </h5>
-                <button style={{marginTop:'25px', marginLeft: '125px', position:'absolute'}} onClick={this.props.closePopup}>Chat With Me</button>    
+                <button style={{marginTop:'25px', marginLeft: '125px', position:'relative'}} onClick={this.props.closePopup}>Chat With Me</button>    
             </div>
             );  
               
