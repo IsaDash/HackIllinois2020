@@ -4,6 +4,7 @@ import Avatar from './components/Avatar'
 import SignUp from './components/SignUp'
 import Map from './components/Map'
 
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -11,8 +12,9 @@ class App extends React.Component {
   render () {
     return (
       <div>
-         {/* <Map />  */}
         <Avatar />
+        <Map /> 
+        
     
       </div>
       

@@ -3,6 +3,10 @@ import React from 'react';
 import './Avatar.css'
 import ClassmateInfo from './ClassmateInfo'
 import AvatarImage from './images/avatar.png'
+import autoScroll from 'autoscroll'
+import ImageMapper from 'react-image-mapper';
+import Map from './Map'
+
 
 var avatar = null
 class Avatar extends React.Component {    
@@ -11,6 +15,7 @@ class Avatar extends React.Component {
         this.state = {
             showPopup: false
         }
+
         this.makeAvatar = this.makeAvatar.bind(this);
         this.moveDown = this.moveDown.bind(this);
         this.moveUp = this.moveUp.bind(this);
@@ -19,6 +24,21 @@ class Avatar extends React.Component {
         this.handleOnKeyPressed = this.handleOnKeyPressed.bind(this);
         this.handlePopup = this.handlePopup.bind(this);
     }
+
+    refContent = (content) => {
+        this.content = content;
+    }
+ 
+    actions = {
+        onMouseMove: (e) => {
+            // Start auto scrolling
+            autoScroll.run(e, this.content);
+        },
+        onMouseOut: (e) => {
+            // Stop auto scrolling if any
+            autoScroll.end();
+        }
+    };
 
     componentDidMount() {
         this.makeAvatar();
@@ -33,6 +53,8 @@ class Avatar extends React.Component {
     }
 
     handleOnKeyPressed = (e) => {
+        autoScroll.run(e, this.content);
+
         console.log(e.which || e.keyCode);
         var key_code=e.which||e.keyCode;
 		switch(key_code){
@@ -81,7 +103,8 @@ class Avatar extends React.Component {
     return (
         //TODO: closePopup() should open chat screen to chat with the user. 
       <div className="Background">
-         <button className="button" id="avatar" onKeyDown={this.handleOnKeyPressed} onClick={this.handlePopup} ></button>
+        
+        <button className="button" id="avatar" ref={this.refContent} onKeyDown={this.handleOnKeyPressed} onClick={this.handlePopup} ></button>
         <div>
         {this.state.showPopup ?  
             <ClassmateInfo closePopup={this.handlePopup} />  
