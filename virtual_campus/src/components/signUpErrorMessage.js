@@ -6,7 +6,7 @@ export default function ErrroMessage({ error }) {
       case "required":
         return <p>This is required</p>;
       case "minLength":
-        return <p>Your last name need minmium 2 charcaters</p>;
+        return <p>Your last name need minmium 2 characters</p>;
       case "pattern":
         return <p>Enter a valid email address</p>;
       case "min":

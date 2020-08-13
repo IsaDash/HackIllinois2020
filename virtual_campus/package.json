@@ -10,6 +10,7 @@
     "arrow-keys-react": "^1.0.6",
     "autoscroll": "^0.2.1",
     "bootstrap": "^4.5.2",
+    "firebase": "^7.17.2",
     "mdbreact": "^4.27.0",
     "packages": "0.0.8",
     "react": "^16.13.1",

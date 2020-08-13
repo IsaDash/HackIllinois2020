@@ -13,6 +13,8 @@ img{
 form {
   max-width: 500px;
   margin: 0 auto;
+  align-items: center;
+
 }
 
 h1 {
@@ -21,6 +23,10 @@ h1 {
   text-align: center;
   padding-bottom: 10px;
   border-bottom: 1px solid rgb(79, 98, 148);
+}
+
+span {
+  color: white;
 }
 
 .form {
