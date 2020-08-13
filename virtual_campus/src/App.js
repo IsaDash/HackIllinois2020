@@ -3,6 +3,8 @@ import './App.css';
 import Avatar from './components/Avatar'
 import SignUp from './components/SignUp'
 import Map from './components/Map'
+import ClassmateInfo from './components/ClassmateInfo'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -10,11 +12,9 @@ class App extends React.Component {
   }
   render () {
     return (
-      <div>
-         {/* <Map />  */}
+
         <Avatar />
-    
-      </div>
+
       
     );
   }

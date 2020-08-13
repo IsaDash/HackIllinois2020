@@ -1,18 +1,9 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import rootReducer from './reducers'
-import App from './components/App'
-import HackIllinoisData from './modules/HackIllinoisData'
+import { combineReducers, createStore, compose} from 'redux'
+import editAvatar from './modules/EditAvatar';
 
-const store = createStore(
-    HackIllinoisData
-)
+const reducer =  combineReducers({
+  editAvatar
+})
 
-render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-)
+
+

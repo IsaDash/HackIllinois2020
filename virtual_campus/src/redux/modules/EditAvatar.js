@@ -1,40 +1,36 @@
-//Action Creators
+import update from 'immutability-helper'
+
+//Actions
 const UPDATE_AVATAR_MOVEMENT_LEFT = "UPDATE_AVATAR_MOVEMENT_LEFT"
 const UPDATE_AVATAR_MOVEMENT_RIGHT = "UPDATE_AVATAR_MOVEMENT_RIGHT"
 const UPDATE_AVATAR_MOVEMENT_UP = "UPDATE_AVATAR_MOVEMENT_UP"
 const UPDATE_AVATAR_MOVEMENT_DOWN = "UPDATE_AVATAR_MOVEMENT_DOWN"
 
-//Action Creators
-export function updateAvatarMovementLeft (left) {
-    return { 
+//Creating Actions
+export const updateAvatarMovementLeft = (left) => ({
         type: UPDATE_AVATAR_MOVEMENT_LEFT,
         left: left
-    }
-}
+})
 
-export function updateAvatarMovementUp (up) {
-    return { 
+export const updateAvatarMovementUp = (up) => ({
         type: UPDATE_AVATAR_MOVEMENT_UP,
         up: up
-    }
-}
+})
 
-export function updateAvatarMovementDown (down) {
-    return { 
+
+export const updateAvatarMovementDown = (down) => ({
         type: UPDATE_AVATAR_MOVEMENT_DOWN,
         down: down
-    }
-}
+})
 
-export function updateAvatarMovementRight (right) {
-    return { 
+export const updateAvatarMovementRight = (right) => ({
         type: UPDATE_AVATAR_MOVEMENT_RIGHT,
         right: right
-    }
-}
+})
 
-//Reducers 
-initialState = {
+//Initial States
+const initialState = {
+    left: "0px",
     avatar: {
         style: {
             left: '0px',
@@ -46,20 +42,16 @@ initialState = {
     }
 }
 
-function editData(state = initialState, action) {
+//Reducers 
+export default function reducer(state = initialState, action) {
+    let newState = state;
+
     switch (action.type) {
       case UPDATE_AVATAR_MOVEMENT_LEFT:
-        return Object.assign({}, state, {
-          style: {
-                left: action.left,
-                right: state.style.right,
-                up:  state.style.up,
-                down: state.style.down,
-                position: state.style.position
-          }
-        })
-      
-      default:
-        return state
+          newState = update(state, {
+            left: {$set: action.left}
+          })
+          break;
     }
+    return newState;
   }

@@ -1,11 +1,11 @@
 import React from 'react';
-import ImageMapper from 'react-image-mapper';
 //import ArrowKeysReact from 'arrow-keys-react';
 import './Avatar.css'
 import ClassmateInfo from './ClassmateInfo'
 import AvatarImage from './images/avatar.png'
+import ImageMapper from 'react-image-mapper';
+import Map from './Map'
 
-import { connect, bindActionCreators } from 'react-redux'
 
 var avatar = null
 class Avatar extends React.Component {    
@@ -14,6 +14,7 @@ class Avatar extends React.Component {
         this.state = {
             showPopup: false
         }
+
         this.makeAvatar = this.makeAvatar.bind(this);
         this.moveDown = this.moveDown.bind(this);
         this.moveUp = this.moveUp.bind(this);
@@ -22,6 +23,21 @@ class Avatar extends React.Component {
         this.handleOnKeyPressed = this.handleOnKeyPressed.bind(this);
         this.handlePopup = this.handlePopup.bind(this);
     }
+
+    refContent = (content) => {
+        this.content = content;
+    }
+ 
+    actions = {
+        onMouseMove: (e) => {
+            // Start auto scrolling
+           
+        },
+        onMouseOut: (e) => {
+            // Stop auto scrolling if any
+        
+        }
+    };
 
     componentDidMount() {
         this.makeAvatar();
@@ -36,24 +52,24 @@ class Avatar extends React.Component {
     }
 
     handleOnKeyPressed = (e) => {
-        console.log(e.which || e.keyCode);
+
         var key_code=e.which||e.keyCode;
 		switch(key_code){
 			case 90: 
                 this.moveLeft();
-                console.log("left")
+          
 				break;
 			case 83: 
                 this.moveUp();
-                console.log("up")
+       
 				break;
 			case 67: 
                 this.moveRight();
-                console.log("right")
+         
 				break;
 			case 88:
                 this.moveDown();
-                console.log("down")
+ 
 				break;						
         }
     }
@@ -79,13 +95,12 @@ class Avatar extends React.Component {
     }
 
   render () {
-  //  <div id = "avatar" onKeyDown={this.handleOnKeyPressed} tabIndex="0" ></div>
-  
     return (
         //TODO: closePopup() should open chat screen to chat with the user. 
-      <div>          
-         <button className="button" id="avatar" onKeyDown={this.handleOnKeyPressed} onClick={this.handlePopup} ></button>
+      <div className="Background">
         
+        <button className="button" id="avatar" ref={this.refContent} onKeyDown={this.handleOnKeyPressed} onClick={this.handlePopup} ></button>
+
         {this.state.showPopup ?  
             <ClassmateInfo closePopup={this.handlePopup} />  
             : null  
@@ -97,17 +112,4 @@ class Avatar extends React.Component {
   
 }
 
-const mapStateToProps = dispatch => {
-    return {
-      
-    }
-  }
-
-  const mapDispatchToProps = dispatch => {
-    return {
-      
-    }
-  }
-
- // export connect(mapStateToProps, mapDispatchToProps)(Avatar)
 export default Avatar;

@@ -1,5 +1,10 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { updateAvatarMovementLeft } from '../redux/modules/EditAvatar';
+
+
 import './Avatar.css'
 import flowerProfile from './images/flowerProfile.jpg'
 
@@ -9,6 +14,8 @@ class ClassmateInfo extends React.Component {
     }
 
     render() {
+        console.log(this.props.avatar);
+        console.log(this.props.left)
         return (  
             <div className = "Classmate-Bio">  
                 <img className="Profile-Picture" src={flowerProfile} alt="profilePic" />
@@ -30,4 +37,19 @@ class ClassmateInfo extends React.Component {
     }
 }
 
-export default ClassmateInfo;
+
+const mapStateToProps = state => {
+    return {
+        avatar: state.editAvatar.avatar,
+        left: state.editAvatar.left
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators ({
+        updateAvatarMovementLeft
+    })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ClassmateInfo);
+//export default ClassmateInfo;
