@@ -12,7 +12,7 @@ class App extends React.Component {
     return (
       <div>
          {/* <Map />  */}
-        <Avatar />
+         <Avatar /> 
     
       </div>
       
