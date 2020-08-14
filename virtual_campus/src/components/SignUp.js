@@ -11,7 +11,7 @@ import * as ROUTES from '../constants/routes';
 
 const SignUpPage = () => (
   <div>
-    <h1>SignUp</h1>
+    <h1>Sign Up</h1>
     <FirebaseContext.Consumer>
       {firebase => <SignUpForm firebase={firebase} />}
     </FirebaseContext.Consumer>
@@ -77,8 +77,10 @@ class SignUpFormBase extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+
+
   render() {
-    
+
     const {
       firstName,
       lastName,
@@ -98,6 +100,14 @@ class SignUpFormBase extends Component {
       email === '' ||
       firstName === '' ||
       lastName === '';
+
+    const style = {
+       height: '100vh',
+       display: 'flex',
+       flexDirection: 'column',
+       alignItems: 'center',
+       justifyContent: 'center'
+     };
 
 
     return (
