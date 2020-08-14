@@ -9,7 +9,8 @@ class ClassmateInfo extends React.Component {
         super(props);
         this.state = {
             left: props.left,
-            top: props.top
+            top: props.top,
+            firstName: props.firstName,
         }
         console.log(this.props.firebase.auth.currentUser.uid);
     }

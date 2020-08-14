@@ -29,7 +29,6 @@ class OtherAvatar extends React.Component {
 
         this.handlePopup = this.handlePopup.bind(this);
 
-
     }
 
     componentDidMount() {
@@ -57,9 +56,8 @@ class OtherAvatar extends React.Component {
     }
 
     handlePopup = () => {
-        this.setState({ popupUID: null });
+        this.setState({ showPopup: !this.state.showPopup });
     }
-
 
     render() {
         return (
@@ -69,10 +67,16 @@ class OtherAvatar extends React.Component {
                 <ul>
                     {this.state.avatars.map(avatar => (
                         <div key={avatar.uid}>
-                            <button className='button' id='other_avatar' style={{ left: avatar.left_coord, top: parseInt(avatar.top_coord) + 140 + 'px' }}>
-                                <strong>name:</strong> {avatar.firstName}
-                                {/* <ClassmateInfo></ClassmateInfo> */}
+                            <button className='button' id='other_avatar' onClick={this.handlePopup} style={{ left: avatar.left_coord, top: parseInt(avatar.top_coord) + 140 + 'px' }}>
+                                {/* <strong>name:</strong> {avatar.firstName} */}
+                                
                             </button>
+
+                            {this.state.showPopup ?
+                                    
+                                    <ClassmateInfo avatar={avatar} left={parseInt(avatar.left_coord) + 50 + 'px'} top={parseInt(avatar.top_coord) + 200 + 'px'} closePopup={this.handlePopup} />
+                                    : null
+                                }
 
                         </div>
                     ))}
