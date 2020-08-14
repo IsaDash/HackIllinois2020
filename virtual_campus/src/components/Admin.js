@@ -35,7 +35,7 @@ class AdminPage extends Component {
         users: usersList,
         loading: false,
       });
-      // console.log(this.state.users)
+     
     });
   }
 

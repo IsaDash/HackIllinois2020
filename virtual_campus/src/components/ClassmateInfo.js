@@ -1,6 +1,7 @@
 import React from 'react';
 import './Avatar.css'
 import flowerProfile from './images/flowerProfile.jpg'
+import { withAuthorization } from './Session';
 
 
 class ClassmateInfo extends React.Component {
@@ -10,7 +11,29 @@ class ClassmateInfo extends React.Component {
             left: props.left,
             top: props.top
         }
+        console.log(this.props.firebase.auth.currentUser.uid);
     }
+
+    componentDidMount() {
+        this.props.firebase.users().on('value', snapshot => {
+          const usersObject = snapshot.val();
+    
+          console.log(usersObject[String(this.state.currentUID)]);
+    
+          const usersList = Object.keys(usersObject).map(key => ({
+            ...usersObject[key],
+            uid: key,
+          }));
+    
+          console.log(usersList);
+    
+          this.setState({
+            users: usersList,
+            loading: false,
+          });
+         
+        });
+      }
 
     render() {
         var leftMargin = this.state.left;
@@ -35,5 +58,7 @@ class ClassmateInfo extends React.Component {
               
     }
 }
-
-export default ClassmateInfo;
+const condition =  authUser => {
+    if (authUser) ; return !!authUser};
+  
+  export default withAuthorization(condition)(ClassmateInfo);

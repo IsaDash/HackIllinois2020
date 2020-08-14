@@ -2,7 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import CardColumns from 'react-bootstrap/CardColumns';
 import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 class ClassInfo extends React.Component {
     constructor(props) {
@@ -10,7 +10,7 @@ class ClassInfo extends React.Component {
     }
     render() {
         return (
-            <CardColumns>
+            <CardColumns id='ClassInfo'>
             <Card bg='light' border='dark' style={{ width: '18rem' }}>
               <Card.Body>
                 <Card.Title>CS</Card.Title>
