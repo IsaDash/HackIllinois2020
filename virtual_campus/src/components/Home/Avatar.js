@@ -24,7 +24,8 @@ class Avatar extends React.Component {
 
         this.state = {
             showPopup: false,
-            avatarLeft: 0
+            left_coord: 0,
+            top_coord: 0
         }
 
         this.makeAvatar = this.makeAvatar.bind(this);
@@ -47,6 +48,12 @@ class Avatar extends React.Component {
     componentDidMount() {
         this.makeAvatar();
         console.log("started");
+
+        firebase.database().ref('/users/' + this.props.firebase.auth.currentUser.uid + '/left_coord').once('value', snapshot => {
+            this.state.left_coord = snapshot.val();
+            console.log(this.state.left_coord);
+        });
+
     }
 
     makeAvatar = () => {

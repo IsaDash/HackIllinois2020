@@ -41,8 +41,11 @@ class OtherAvatar extends React.Component {
                 ...avatarsObject[key],
                 uid: key,
             }));
-
-            avatarList = avatarList.filter(key => key.uid != this.props.firebase.auth.currentUser.uid);
+            var myAvatar = this.props.firebase.auth.currentUser;
+            if (myAvatar != null) {
+                avatarList = avatarList.filter(key => key.uid != myAvatar.uid);
+            }
+            
 
 
 
@@ -70,7 +73,7 @@ class OtherAvatar extends React.Component {
                 <ul>
                     {this.state.avatars.map(avatar => (
                         <div key={avatar.uid}>
-                            <button className='button' id='other_avatar' onClick={this.handlePopup.bind(this, avatar)} style={{ left: avatar.left_coord, top: parseInt(avatar.top_coord) + 140 + 'px' }}>
+                            <button className='button' id='other_avatar' onClick={this.handlePopup.bind(this, avatar)} style={{ left: avatar.left_coord, top: parseInt(avatar.top_coord) + 175 + 'px' }}>
                             </button>
 
                             
