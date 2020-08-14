@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import * as ROUTES from '../../constants/routes';
-import SignOutButton from '../SignOut';
+import SignOutButton from '../Auth/SignOut';
 import { AuthUserContext } from '../Session';
 import {withFirebase} from '../Firebase'
 

@@ -7,11 +7,11 @@ import {
 } from 'react-router-dom';
 
 import Navigation from './Navigation';
-import SignUpPage from './SignUp';
-import SignInPage from './SignIn';
-import AdminPage from './Admin';
+import SignUpPage from './Auth/SignUp';
+import SignInPage from './Auth/SignIn';
+import AdminPage from './Auth/Admin';
 import HomePage from '../App';
-import ClassInfo from './ClassInfo';
+import ClassInfo from './Classroom/ClassInfo';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import { withAuthentication } from './Session';
