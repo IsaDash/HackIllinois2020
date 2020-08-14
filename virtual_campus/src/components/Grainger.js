@@ -1,5 +1,8 @@
 import React from 'react';
 import './Grainger.css'
+import { withAuthorization } from './Session';
+import { Link, withRouter } from 'react-router-dom';
+import * as ROUTES from '../constants/routes';
 
 class Grainger extends React.Component {
     constructor(props) {
@@ -8,6 +11,7 @@ class Grainger extends React.Component {
     render() {
         return (
           <div>
+            <Link to={ROUTES.HOME} style={{color: "white"}}>Return To Map</Link>
           <div className = "Room-Info" >  
           <h1>WELCOME TO GRAINGER ENGINEERING LIBRARY</h1>
           <h3 style={{color:"white", textAlign:"left", marginLeft: "2%", marginRight:"2%"}}>  
