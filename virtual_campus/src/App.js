@@ -8,7 +8,6 @@ import ClassmateInfo from './components/ClassmateInfo'
 
 import { withAuthorization } from './components/Session';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props)
