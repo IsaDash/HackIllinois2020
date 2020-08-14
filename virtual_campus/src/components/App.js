@@ -9,7 +9,8 @@ import Navigation from './Navigation';
 import SignUpPage from './SignUp';
 import SignInPage from './SignIn';
 import AdminPage from './Admin';
-import HomePage from '../App'
+import HomePage from '../App';
+import ClassInfo from './ClassInfo';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import { withAuthentication } from './Session';
@@ -24,6 +25,8 @@ const App = () => (
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
+      <Route path={ROUTES.CLASSINFO} component={ClassInfo} />
+      
     </div>
   </Router>
 );

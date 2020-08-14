@@ -5,12 +5,27 @@ import ClassmateInfo from './ClassmateInfo'
 import AvatarImage from './images/avatar.png'
 import ImageMapper from 'react-image-mapper';
 import Map from './Map'
+import { withAuthorization } from './Session';
 
+import config from './Firebase/config';
+
+//firebase requirements
+var firebase = require('firebase/app');
+require('firebase/auth');
+require('firebase/database');
 
 var avatar = null
-class Avatar extends React.Component {    
+class Avatar extends React.Component {
     constructor(props) {
         super(props)
+
+        if (!firebase.apps.length) {
+            this.app = firebase.initializeApp(config);
+        }
+
+        this.database = firebase.database().ref();
+        console.log(this.props.firebase.auth.currentUser.uid);
+
         this.state = {
             showPopup: false,
             avatarLeft: 0
@@ -25,20 +40,13 @@ class Avatar extends React.Component {
         this.handlePopup = this.handlePopup.bind(this);
     }
 
-    refContent = (content) => {
-        this.content = content;
+    writeUserData(leftCoord, topCoord) {
+        firebase.database().ref('users/' + this.props.firebase.auth.currentUser.uid).update({
+            left_coord: leftCoord,
+            top_coord: topCoord
+        });
     }
- 
-    actions = {
-        onMouseMove: (e) => {
-            // Start auto scrolling
-           
-        },
-        onMouseOut: (e) => {
-            // Stop auto scrolling if any
-        
-        }
-    };
+
 
     componentDidMount() {
         this.makeAvatar();
@@ -51,38 +59,36 @@ class Avatar extends React.Component {
         avatar.style.left = '0px';
         avatar.style.top = '0px';
 
-        this.setState({
-            avatarLeft: 0
-        });
     }
 
     handleOnKeyPressed = (e) => {
 
-        var key_code=e.which||e.keyCode;
+        var key_code = e.which || e.keyCode;
         console.log(key_code)
-		switch(key_code){
-			case 65: 
+        switch (key_code) {
+            case 65:
                 this.moveLeft();
-          
-				break;
-			case 87: 
+
+                break;
+            case 87:
                 this.moveUp();
-       
-				break;
-			case 68: 
+
+                break;
+            case 68:
                 this.moveRight();
-         
-				break;
-			case 83:
+
+                break;
+            case 83:
                 this.moveDown();
- 
-				break;						
+
+                break;
         }
+        this.writeUserData(avatar.style.left, avatar.style.top);
     }
 
     moveLeft = () => {
         this.setState({
-            avatarLeft: 15 
+            avatarLeft: 15
         })
 
         avatar.style.left = parseInt(avatar.style.left) - 15 + 'px';
@@ -90,7 +96,7 @@ class Avatar extends React.Component {
 
     moveRight = () => {
         this.setState({
-            avatarLeft: parseInt(avatar.style.left) - 15 
+            avatarLeft: parseInt(avatar.style.left) - 15
         })
         console.log(this.avatarLeft);
 
@@ -109,21 +115,24 @@ class Avatar extends React.Component {
         this.setState({ showPopup: !this.state.showPopup });
     }
 
-  render () {
-    return (
-      <div className="Background">
-        
-        <button className="button" id="avatar" ref={this.refContent} onKeyDown={this.handleOnKeyPressed} onClick={this.handlePopup} ></button>
+    render() {
+        return (
+            <div className="Background">
 
-        {this.state.showPopup ?  
-            <ClassmateInfo left={parseInt(avatar.style.left) + 50 + 'px'} top={parseInt(avatar.style.top) + 200 + 'px'} closePopup={this.handlePopup} />  
-            : null  
-        } 
-     
-      </div>
-    );
-  }
-  
+                <button className="button" id="avatar" ref={this.refContent} onKeyDown={this.handleOnKeyPressed} onClick={this.handlePopup} ></button>
+
+                {this.state.showPopup ?
+                    <ClassmateInfo left={parseInt(avatar.style.left) + 50 + 'px'} top={parseInt(avatar.style.top) + 200 + 'px'} closePopup={this.handlePopup} />
+                    : null
+                }
+
+            </div>
+        );
+    }
+
 }
 
-export default Avatar;
+const condition =  authUser => {
+    if (authUser) ; return !!authUser};
+  
+  export default withAuthorization(condition)(Avatar);
