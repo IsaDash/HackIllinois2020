@@ -3,6 +3,7 @@ import ImageMapper from 'react-image-mapper';
 import './Map.css'
 
 import OtherAvatar from './OtherAvatar'
+import Avatar from './Avatar';
 
 class Map extends React.Component {
     
@@ -44,6 +45,7 @@ class Map extends React.Component {
       return (
         
         <div>
+            <Avatar></Avatar>
             <OtherAvatar></OtherAvatar>
             <ImageMapper className='map' src={require('../images/uiuc_map_cropped.jpg')} map={AREAS_MAP}
             // onClick={area => this.clicked(area)}
