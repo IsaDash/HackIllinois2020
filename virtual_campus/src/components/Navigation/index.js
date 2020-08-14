@@ -43,7 +43,7 @@ class  NavigationAuth  extends Component {
   return (
     <div>
       <SignOutButton />
-      <span> Welcome to the UIUC campus {name}!</span>
+      <h1> Welcome to the UIUC campus, {name}!</h1>
     </div>
   )
 
