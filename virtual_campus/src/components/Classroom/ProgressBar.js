@@ -1,38 +1,56 @@
 import React from "react";
+import "./ProgressBar.css";
 
-const ProgressBar = (props) => {
-  const { bgcolor, completed } = props;
-
-  const containerStyles = {
-    height: 20,
-    width: '75%',
-    backgroundColor: "#ffffff",
-    borderRadius: 50,
-    margin: 75,
+class Progress extends React.Component {
+    constructor(props) {
+      super(props)
+      
+      this.state = {
+        percentage: 0
+      }
+      
+      this.nextStep = this.nextStep.bind(this)
+    }
+    
+    nextStep() {
+      if(this.state.percentage === 100) return 
+      this.setState(prevState => ({ percentage: prevState.percentage + 5 }))
+    }
+    
+    render() {
+      return (
+        <div>
+          
+          <ProgressBar percentage={this.state.percentage} />
+          
+          <div style={{ marginTop: '20px' }}>  
+            <button 
+              onClick={this.nextStep}
+             >
+              Next Step
+            </button>  
+          </div>   
+          
+          <div style={{marginTop: '10px', color: 'blue', marginBottom: '15px'}} onClick={() => this.setState({ percentage: 0 })}>
+            Reset
+          </div>
+        </div>
+      )
+    }  
+  }
+  
+  const ProgressBar = (props) => {
+    return (
+        <div className="progress-bar">
+          <Filler percentage={props.percentage} />
+        </div>
+      )
+  }
+  
+  const Filler = (props) => {
+    return <div className="filler" style={{ width: `${props.percentage}%` }} />
   }
 
-  const fillerStyles = {
-    height: '100%',
-    width: `${completed}%`,
-    backgroundColor: bgcolor,
-    transition: 'width 1s ease-in-out',
-    borderRadius: 'inherit',
-    textAlign: 'right',
-  }
+  
 
-  const labelStyles = {
-    padding: 5,
-    color: 'white',
-    fontWeight: 'bold',
-  }
-
-  return (
-    <div style={containerStyles}>
-      <div style={fillerStyles}>
-        <span style={labelStyles}>{`${completed}%`}</span>
-      </div>
-    </div>
-  );
-};
-
-export default ProgressBar;
+  export default Progress;
