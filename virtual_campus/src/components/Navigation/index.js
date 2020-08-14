@@ -16,6 +16,9 @@ const Navigation = () => (
 );
 const NavigationAuth = () => (
   <ul>
+    <li>
+    <Link to={ROUTES.SIGN_IN} style={{color: 'white'}}>Sign In</Link>
+    </li>
       <li>
         <Link to={ROUTES.ADMIN} style={{color: 'white'}}>Admin</Link>
       </li>

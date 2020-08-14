@@ -21,8 +21,8 @@ const App = () => (
       <Navigation />
 
       <hr />
-      <Route path={ROUTES.HOME} component={HomePage}/>
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+      <Route path={ROUTES.HOME} component={HomePage}/>
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
       <Route path={ROUTES.CLASSINFO} component={ClassInfo} />
