@@ -14,26 +14,26 @@ class ClassmateInfo extends React.Component {
         console.log(this.props.firebase.auth.currentUser.uid);
     }
 
-    componentDidMount() {
-        this.props.firebase.users().on('value', snapshot => {
-          const usersObject = snapshot.val();
+    // componentDidMount() {
+    //     this.props.firebase.users().on('value', snapshot => {
+    //       const usersObject = snapshot.val();
     
-          console.log(usersObject[String(this.state.currentUID)]);
+    //       console.log(usersObject[String(this.state.currentUID)]);
     
-          const usersList = Object.keys(usersObject).map(key => ({
-            ...usersObject[key],
-            uid: key,
-          }));
+    //       const usersList = Object.keys(usersObject).map(key => ({
+    //         ...usersObject[key],
+    //         uid: key,
+    //       }));
     
-          console.log(usersList);
+    //       console.log(usersList);
     
-          this.setState({
-            users: usersList,
-            loading: false,
-          });
+    //       this.setState({
+    //         users: usersList,
+    //         loading: false,
+    //       });
          
-        });
-      }
+    //     });
+    //   }
 
     render() {
         var leftMargin = this.state.left;
