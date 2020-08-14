@@ -1,40 +1,59 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../constants/routes';
 import SignOutButton from '../SignOut';
 import { AuthUserContext } from '../Session';
+import {withFirebase} from '../Firebase'
 
 const Navigation = () => (
   <div>
     <AuthUserContext.Consumer>
       {authUser =>
-        authUser ? <NavigationAuth /> : <NavigationNonAuth />
+        authUser ? <NavigationAuthWithFB  loggedinUser={authUser}/> : <NavigationNonAuth />
       }
     </AuthUserContext.Consumer>
   </div>
 );
-const NavigationAuth = () => (
-  <ul>
-    <li>
-    <Link to={ROUTES.SIGN_IN} style={{color: 'white'}}>Sign In</Link>
-    </li>
-      <li>
-        <Link to={ROUTES.ADMIN} style={{color: 'white'}}>Admin</Link>
-      </li>
-    <li>
+
+class  NavigationAuth  extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      userData : ''
+    };
+
+  }
+  componentDidMount() {
+  const obj = this;
+  var ref = this.props.firebase.user(this.props.loggedinUser.uid);
+
+  ref.once("value")
+    .then(function(snapshot) {
+      var user = snapshot.val();
+      obj.setState({userData:user})
+    })
+  }
+
+  render() {
+
+    const {userData} = this.state;
+    const name = userData?userData.firstName +" " + userData.lastName:''
+  return (
+    <div>
       <SignOutButton />
-    </li>
-  </ul>
-);
+      <span> Welcome to the UIUC campus {name}!</span>
+    </div>
+  )
 
+
+}
+}
+const NavigationAuthWithFB = withFirebase(NavigationAuth)
 const NavigationNonAuth = () => (
-  <ul>
-   <li>
-    <Link to={ROUTES.SIGN_IN} style={{color: 'white'}}>Sign In</Link>
-  </li>
+  <div />
 
-  </ul>
 );
 
 export default Navigation;
