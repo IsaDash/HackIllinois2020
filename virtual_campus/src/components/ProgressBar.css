@@ -1,0 +1,8 @@
+.ProgressBar {
+    background: #222222;
+    height: 20px;
+    margin: 15px auto;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: #ec5990 
+}
