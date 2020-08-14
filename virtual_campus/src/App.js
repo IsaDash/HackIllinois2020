@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.css';
-import Avatar from './components/Avatar'
-import SignUp from './components/SignUp'
-import Map from './components/Map'
-import ClassmateInfo from './components/ClassmateInfo'
+import Avatar from './components/Home/Avatar'
+import Map from './components/Home/Map'
+
 
 
 import { withAuthorization } from './components/Session';
@@ -12,20 +11,20 @@ class App extends React.Component {
   constructor(props) {
     super(props)
   }
-  render () {
+  render() {
     return (
-        <div>
-           <Avatar />
+      <div>
+        <Avatar />
         <Map />
-        {/* <ClassInfo></ClassInfo> */}
-        </div>
+      </div>
     );
   }
 
 }
 
-const condition =  authUser => {
-  if (authUser) console.log(authUser.uid); return !!authUser};
+const condition = authUser => {
+  if (authUser) console.log(authUser.uid); return !!authUser
+};
 
 export default withAuthorization(condition)(App);
 //export default App;
