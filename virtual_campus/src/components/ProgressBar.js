@@ -1,29 +1,38 @@
-import React, {Component, Fragment} from 'react';
-import './ProgressBar.css'
+import React from "react";
 
+const ProgressBar = (props) => {
+  const { bgcolor, completed } = props;
 
+  const containerStyles = {
+    height: 20,
+    width: '75%',
+    backgroundColor: "#ffffff",
+    borderRadius: 50,
+    margin: 75,
+  }
 
-class ProgressBar extends React.Component {
+  const fillerStyles = {
+    height: '100%',
+    width: `${completed}%`,
+    backgroundColor: bgcolor,
+    transition: 'width 1s ease-in-out',
+    borderRadius: 'inherit',
+    textAlign: 'right',
+  }
 
-    constructor() {
-        super();
-        this.state = {
-            percentage: 0
-        }
-    }
-    render() {
-        return (
-            <div>
-                <div className="ProgressBar" />
-                <Fragment>
-                <ProgressBar percentage={this.state.percentage} />
-                <button onClick={() => this.setState({percentage: this.state.percentage + 25})}>Next</button>
-                </Fragment>
+  const labelStyles = {
+    padding: 5,
+    color: 'white',
+    fontWeight: 'bold',
+  }
 
-            </div>
-            
-            
-        );
-    }
-}
+  return (
+    <div style={containerStyles}>
+      <div style={fillerStyles}>
+        <span style={labelStyles}>{`${completed}%`}</span>
+      </div>
+    </div>
+  );
+};
+
 export default ProgressBar;
