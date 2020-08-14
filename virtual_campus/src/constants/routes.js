@@ -4,4 +4,5 @@ export const HOME = '/home';
 export const ADMIN = '/admin';
 export const CLASSINFO = '/classinfo';
 export const GRAINGER = '/grainger';
+export const UNION = '/union';
 export const ROOT = '/';

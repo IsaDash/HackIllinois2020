@@ -13,9 +13,11 @@ import AdminPage from './Auth/Admin';
 import HomePage from '../App';
 import ClassInfo from './Classroom/ClassInfo';
 import Grainger from '../components/Grainger';
+import Union from '../components/IlliniUnion';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import { withAuthentication } from './Session';
+import IlliniUnion from '../components/IlliniUnion';
 
 const App = () => (
   <Router>
@@ -30,6 +32,7 @@ const App = () => (
       <Route path={ROUTES.ADMIN} component={AdminPage} />
       <Route path={ROUTES.CLASSINFO} component={ClassInfo} />
       <Route path={ROUTES.GRAINGER} component={Grainger} />
+      <Route path={ROUTES.UNION} component={IlliniUnion} />
 
     </div>
   </Router>
