@@ -65,6 +65,8 @@ class Avatar extends React.Component {
 
         var key_code = e.which || e.keyCode;
         console.log(key_code)
+        console.log(avatar.style.left, avatar.style.top)
+
         switch (key_code) {
             case 65:
                 this.moveLeft();
