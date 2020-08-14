@@ -1,7 +1,7 @@
 import React from 'react';
 import './Grainger.css'
 
-class ClassInfo extends React.Component {
+class Grainger extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -23,6 +23,10 @@ class ClassInfo extends React.Component {
               UIUC has multiple libraries. Grainger Engineering Library (the library you're in right now), ACES(Funk) Library, 
               Undergraduate Library, and the Main Library are just a few of them! Let's explore the Grainger Engineering Library!
           </h3>
+          <button style={{marginTop:'5px', marginLeft: '40%', position:'absolute', backgroundColor:"#ec5990"}} 
+            onClick={() => window.open("https://meet.google.com/bah-qjqe-vgq", "_blank")}>
+            Click Me To Study With Others Virtually
+          </button> 
           </div>
 
           <div className="Basement-Floor">
@@ -33,11 +37,7 @@ class ClassInfo extends React.Component {
             testing facility. It gives students the flexibility to schedule their exams/quizzes for their classes.
             Multiple classes uses this method for quizzes/exams. (Note: CBTF will be online for Fall 2020 due to COVID-19)
 
-           </h5>
-          <button style={{marginTop:'5px', marginLeft: '40%', position:'absolute', backgroundColor:"#ec5990"}} 
-            onClick={() => window.open("https://meet.google.com/bah-qjqe-vgq", "_blank")}>
-            Click Me To Study With Others Virtually
-          </button>    
+           </h5>   
       </div>
 
       <div className="First-Floor">
@@ -47,11 +47,7 @@ class ClassInfo extends React.Component {
            is overpriced, but it's worth :). Especially when you're studying all day long. 
            The first floor is also great for group work, and there's tables with monitors if your group
            ever want to share your screen with each other. 
-           </h5>
-          <button style={{marginTop:'5px', marginLeft: '40%', position:'absolute', backgroundColor:"#ec5990"}} 
-            onClick={() => window.open("https://meet.google.com/bah-qjqe-vgq", "_blank")}>
-            Click Me To Study With Others Virtually
-          </button>    
+           </h5>  
       </div>
 
       <div className="Second-Floor">
@@ -61,11 +57,7 @@ class ClassInfo extends React.Component {
             is the place to go. Pro Tip: During finals, it's almost impossible to find a spot to sit on this 
             floor, so get to the library EARLY! Or if you're already awake from pulling an all nighter, 
             that shouldn't be a problem :)
-           </h5>
-          <button style={{marginTop:'5px', marginLeft: '40%', position:'absolute', backgroundColor:"#ec5990"}} 
-            onClick={() => window.open("https://meet.google.com/bah-qjqe-vgq", "_blank")}>
-            Click Me To Study With Others Virtually
-          </button>    
+           </h5>   
       </div>
 
       <div className="Third-Floor">
@@ -73,11 +65,7 @@ class ClassInfo extends React.Component {
           <h5 className="Description-Text" style={{marginLeft:'25px', marginRight:'25px'}}> 
             This floor is similar to the second. Nothing special. It's quiet compared to the basement, first and 
             fourth floors. There's less seating, and there's alot of shelves with books on this floor. 
-           </h5>
-          <button style={{marginTop:'22px', marginLeft: '40%', position:'absolute', backgroundColor:"#ec5990"}} 
-            onClick={() => window.open("https://meet.google.com/bah-qjqe-vgq", "_blank")}>
-            Click Me To Study With Others Virtually
-          </button>    
+           </h5>  
       </div>
 
       <div className="Fourth-Floor">
@@ -87,11 +75,7 @@ class ClassInfo extends React.Component {
             Also most of the study rooms are up there. You can reserve a spot in these study rooms. 
             They have whiteboards and markers that you can also checkout with you i-card. 
             There's also tutoring on this floor, which is great if you need some help with your homework!
-           </h5>
-          <button style={{marginTop:'22px', marginLeft: '40%', position:'absolute', backgroundColor:"#ec5990"}} 
-            onClick={() => window.open("https://meet.google.com/bah-qjqe-vgq", "_blank")}>
-            Click Me To Study With Others Virtually
-          </button>    
+           </h5>   
       </div>
 
 
@@ -108,5 +92,5 @@ class ClassInfo extends React.Component {
         );
     }
 }
-export default ClassInfo;
+export default Grainger;
 

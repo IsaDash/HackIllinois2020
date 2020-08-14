@@ -12,6 +12,7 @@ import SignInPage from './Auth/SignIn';
 import AdminPage from './Auth/Admin';
 import HomePage from '../App';
 import ClassInfo from './Classroom/ClassInfo';
+import Grainger from '../components/Grainger';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import { withAuthentication } from './Session';
@@ -28,6 +29,7 @@ const App = () => (
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
       <Route path={ROUTES.CLASSINFO} component={ClassInfo} />
+      <Route path={ROUTES.GRAINGER} component={Grainger} />
 
     </div>
   </Router>
