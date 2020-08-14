@@ -20,6 +20,10 @@ We build this game entirely with React and Firebase. It is a lightweight web-app
 - Sign in authorization works
 - Clean, simple design
 
+## What We Learned
+- Using different React Libraries
+- Learning how to use firebase, and connecting it with frontend
+
 ## What's next for UniStory
 - Creating a list of "Things To Do" for the players to complete. Players can get points for completing certain tasks. 
 - Expand the number of buildings players can click into
@@ -28,7 +32,7 @@ We build this game entirely with React and Firebase. It is a lightweight web-app
 ## How to play the game: 
 - Your own avatar is orange, while the other player's avatars are blue. 
 - To move your avatar, click on your avatar and use the keys "asdw" to move left, down, right, up respectively
-- Click on the other players' avatar to get to know more about them
+- Click on the other players' avatar to learn more about them
 - Click on a building to go "inside" the building
     - Clicking into an academic building lets the user see the main classes held within that academic building. Users can join the google meets meeting with other players as well. 
     - Clicking into an library lets the user learn more about the library. User can join the google meets meeting to virtually "study" with other players.
