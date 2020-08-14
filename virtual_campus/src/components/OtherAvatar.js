@@ -23,6 +23,7 @@ class OtherAvatar extends React.Component {
         this.database = firebase.database().ref();
 
         this.state = {
+            popupUID: null,
             showPopup: false,
             avatars: []
         }
@@ -55,8 +56,11 @@ class OtherAvatar extends React.Component {
         });
     }
 
-    handlePopup = () => {
-        this.setState({ showPopup: !this.state.showPopup });
+    handlePopup(avatar) {
+        this.setState({ 
+            popupUID: avatar.uid,
+            showPopup: !this.state.showPopup
+         });
     }
 
     render() {
@@ -67,20 +71,19 @@ class OtherAvatar extends React.Component {
                 <ul>
                     {this.state.avatars.map(avatar => (
                         <div key={avatar.uid}>
-                            <button className='button' id='other_avatar' onClick={this.handlePopup} style={{ left: avatar.left_coord, top: parseInt(avatar.top_coord) + 140 + 'px' }}>
-                                {/* <strong>name:</strong> {avatar.firstName} */}
-                                
+                            <button className='button' id='other_avatar' onClick={this.handlePopup.bind(this, avatar)} style={{ left: avatar.left_coord, top: parseInt(avatar.top_coord) + 140 + 'px' }}>
                             </button>
 
-                            {this.state.showPopup ?
-                                    
-                                    <ClassmateInfo avatar={avatar} left={parseInt(avatar.left_coord) + 50 + 'px'} top={parseInt(avatar.top_coord) + 200 + 'px'} closePopup={this.handlePopup} />
-                                    : null
-                                }
+                            
 
                         </div>
                     ))}
                 </ul>
+                {this.state.showPopup ?
+                            // console.log(this.state.avatars.filter(key => key.uid === this.state.popupUID)[0])
+                                    <ClassmateInfo avatar={this.state.avatars.filter(key => key.uid === this.state.popupUID)[0]} closePopup={this.handlePopup} />
+                                    : null
+                                }
             </div>
 
 
@@ -88,7 +91,6 @@ class OtherAvatar extends React.Component {
     }
 
 }
-
 
 const condition = authUser => {
     if (authUser) return authUser.uid; return !!authUser;

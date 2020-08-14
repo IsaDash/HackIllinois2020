@@ -4,6 +4,7 @@ import Avatar from './components/Avatar'
 import SignUp from './components/SignUp'
 import Map from './components/Map'
 import ClassmateInfo from './components/ClassmateInfo'
+import ProgressBar from './components/ProgressBar'
 
 
 import { withAuthorization } from './components/Session';
@@ -15,6 +16,7 @@ class App extends React.Component {
   render () {
     return (
         <div>
+          {/* <ProgressBar></ProgressBar> */}
            <Avatar />
         <Map />
         {/* <ClassInfo></ClassInfo> */}

@@ -123,10 +123,10 @@ class Avatar extends React.Component {
 
                 <button className="button" id="avatar" ref={this.refContent} onKeyDown={this.handleOnKeyPressed} onClick={this.handlePopup} ></button>
 
-                {this.state.showPopup ?
+                {/* {this.state.showPopup ?
                     <ClassmateInfo left={parseInt(avatar.style.left) + 50 + 'px'} top={parseInt(avatar.style.top) + 200 + 'px'} closePopup={this.handlePopup} />
                     : null
-                }
+                } */}
 
             </div>
         );
