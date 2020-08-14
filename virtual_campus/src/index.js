@@ -5,6 +5,7 @@ import App from './components/App';
 import Avatar from './components/Avatar'
 import Map from './components/Map'
 import ClassInfo from './components/ClassInfo'
+import Grainger from './components/Grainger'
 import * as serviceWorker from './serviceWorker';
 
 import Firebase, { FirebaseContext } from './components/Firebase';

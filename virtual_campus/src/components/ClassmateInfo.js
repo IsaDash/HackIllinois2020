@@ -52,7 +52,7 @@ class ClassmateInfo extends React.Component {
                     placeholder placeholder
                     placeholder
                  </h5>
-                <button style={{marginTop:'25px', marginLeft: '125px', position:'relative'}} onClick={this.props.closePopup}>Close</button>    
+                <button style={{marginTop:'25px', marginLeft: '160px', position:'relative'}} onClick={this.props.closePopup}>Close</button>    
             </div>
             );  
               

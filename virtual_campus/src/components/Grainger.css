@@ -1,0 +1,58 @@
+.Room-Info {
+    background: #13294b;
+    width: 100%;
+    height: 70px;
+    position: absolute; 
+    text-align: center;
+}
+
+.Basement-Floor {
+    background: #13294b;
+    width: 100%;
+    height: 20%;
+    position: absolute;  
+    margin-top: 20%;  
+}
+
+.First-Floor {
+    background: #13294b;
+    width: 100%;
+    height: 20%;
+    position: absolute;  
+    margin-top: 32%;  
+}
+
+.Second-Floor {
+    background: #13294b;
+    width: 100%;
+    height: 20%;
+    position: absolute;  
+    margin-top: 44%;  
+}
+
+.Third-Floor {
+    background: #13294b;
+    width: 100%;
+    height: 20%;
+    position: absolute;  
+    margin-top: 56%;  
+}
+
+.Fourth-Floor {
+    background: #13294b;
+    width: 100%;
+    height: 22%;
+    position: absolute;  
+    margin-top: 68%;  
+}
+
+.Header-Text {
+    color: white;
+    text-align: center;
+}
+
+.Description-Text {
+    color: white;
+}
+
+
