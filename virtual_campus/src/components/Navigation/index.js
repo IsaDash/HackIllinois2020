@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import React, { Component } from 'react';
 import * as ROUTES from '../../constants/routes';
 import SignOutButton from '../SignOut';
 import { AuthUserContext } from '../Session';
@@ -10,12 +9,11 @@ const Navigation = () => (
   <div>
     <AuthUserContext.Consumer>
       {authUser =>
-        authUser ? <NavigationAuthWithFB  loggedinUser={authUser}/> : <NavigationNonAuth />
+        authUser ? <NavigationAuthWithFB loggedinUser={authUser} /> : <NavigationNonAuth />
       }
     </AuthUserContext.Consumer>
   </div>
 );
-
 class  NavigationAuth  extends Component {
   constructor(props) {
     super(props);
@@ -51,9 +49,9 @@ class  NavigationAuth  extends Component {
 }
 }
 const NavigationAuthWithFB = withFirebase(NavigationAuth)
+
 const NavigationNonAuth = () => (
   <div />
-
 );
 
 export default Navigation;

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
+  Switch
 } from 'react-router-dom';
 
 import Navigation from './Navigation';
@@ -21,9 +22,9 @@ const App = () => (
       <Navigation />
 
       <hr />
-      <Route path={ROUTES.ROOT} component={HomePage} />
-      <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+      <Route exact path={ROUTES.ROOT} component={HomePage}/>
       <Route path={ROUTES.HOME} component={HomePage}/>
+      <Route path={ROUTES.SIGN_IN} component={SignInPage} />
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
       <Route path={ROUTES.CLASSINFO} component={ClassInfo} />
