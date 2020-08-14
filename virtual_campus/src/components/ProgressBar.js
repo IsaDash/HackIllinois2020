@@ -1,15 +1,24 @@
-import React, { Component } from 'react';
-import ProgressBar from 'react-bootstrap/ProgressBar';
+import React, {Component, Fragment} from 'react';
+import './ProgressBar.css'
 class ProgressBar extends React.Component {
-    constructor(props) {
-        super(props)
+
+    constructor() {
+        super();
+        this.state = {
+            percentage: 0
+        }
     }
     render() {
         return (
-            <ProgressBar>
-            <ProgressBar striped variant="success" now={35} key={1} />
-            <ProgressBar variant="warning" now={20} key={2} />
-            </ProgressBar>
+            <div>
+                <div className="ProgressBar" />
+                <Fragment>
+                <ProgressBar percentage={this.state.percentage} />
+                <button onClick={() => this.setState({percentage: this.state.percentage + 25})}>Next</button>
+                </Fragment>
+
+            </div>
+            
             
         );
     }
